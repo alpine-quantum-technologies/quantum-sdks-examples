@@ -25,7 +25,7 @@ qiskit_backend.options.with_progress_bar = False
 qiskit_backend.simulator.options.seed_simulator = 12345
 
 
-def test_bell_states() -> None:
+def example_bell_states() -> None:
     """Generate the |Ψ+> and |Φ+> Bell states and check their basic properties."""
     dev = qml.device("qiskit.remote", backend=qiskit_backend, wires=2, shots=200)
 
