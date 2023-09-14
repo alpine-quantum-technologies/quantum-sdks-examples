@@ -896,23 +896,21 @@ files = [
 
 [[package]]
 name = "panflute"
-version = "2.3.0"
+version = "1.12.5"
 description = "Pythonic Pandoc filters"
 optional = false
-python-versions = ">=3.6"
+python-versions = "*"
 files = [
-    {file = "panflute-2.3.0-py3-none-any.whl", hash = "sha256:02673bcbdb521a805f08a2ca0ce864de86ad409ad406a01b3700fcf2aca81635"},
-    {file = "panflute-2.3.0.tar.gz", hash = "sha256:cefd9dfc48ccd9732a53db57610701d22806da397a8a97e5cc8dc070b55865ca"},
+    {file = "panflute-1.12.5.tar.gz", hash = "sha256:8b89507c02fde97650441d50169958b50cb13000edcc7f061390ea6fc313775c"},
 ]
 
 [package.dependencies]
-click = ">=6,<9"
-pyyaml = ">=3,<7"
+click = "*"
+pyyaml = "*"
 
 [package.extras]
-dev = ["configparser", "coverage", "flake8", "pandocfilters", "pytest", "pytest-cov", "requests"]
-extras = ["yamlloader (>=1,<2)"]
-pypi = ["Pygments", "docutils", "twine", "wheel"]
+pypi = ["Pygments", "docutils"]
+test = ["configparser", "pandocfilters", "pytest-cov"]
 
 [[package]]
 name = "pastel"
@@ -2109,4 +2107,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.12"
-content-hash = "f6e7c57117bdb431c971f43af7e3d93b92cc6ee71d537ecea49b97d48993a110"
+content-hash = "0a7c8babbba7d26fade3f4c2675c2d6fd90fe7efd549ba76e15ed7d759d500ab"

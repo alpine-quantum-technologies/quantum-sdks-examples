@@ -34,7 +34,7 @@ pennylane-qiskit = ">=0.31.0"
 [tool.poetry.group.dev.dependencies]
 black = "^23.9.1"
 mypy = "=1.5.1"
-panflute = "^2.3.0"
+panflute = "=1.12.5"  # use legacy pandoc-types because of old Ubuntu package
 poethepoet = "^0.22.1"
 pre-commit = "^3.4.0"
 pyproject-fmt = "^1.0"
