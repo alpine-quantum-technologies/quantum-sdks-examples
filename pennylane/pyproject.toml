@@ -30,15 +30,16 @@ python = ">=3.11,<3.12"
 
 qiskit-aqt-provider-rc = ">=0.16.0"
 pennylane-qiskit = ">=0.31.0"
-pennylane = "^0.32.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.9.1"
 mypy = "=1.5.1"
+panflute = "^2.3.0"
 poethepoet = "^0.22.1"
 pre-commit = "^3.4.0"
 pyproject-fmt = "^1.0"
 pytest = ">=7"
+pytest-sugar = "^0.9.7"
 ruff = "^0.0.289"
 
 [build-system]
@@ -144,7 +145,14 @@ shell = "mypy ."
 [tool.poe.tasks.ruff_check]
 shell = "ruff check ."
 
+[tool.poe.tasks.run_examples]
+shell = "pytest ."
+
+[tool.poe.tasks.check_readme_code]
+shell = "pandoc README.md -F ../utils/run_embedded_python_code.py > /dev/null"
+
 [tool.poe.tasks]
 lint = ["ruff_check"]
 format_check = ["black_check", "pyprojectfmt_check"]
-all = ["format_check", "lint", "typecheck"]
+test = ["run_examples", "check_readme_code"]
+all = ["format_check", "lint", "typecheck", "test"]
