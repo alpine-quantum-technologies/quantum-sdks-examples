@@ -32,7 +32,7 @@ from math import pi
 @qml.qnode(dev)
 def circuit():
     qml.RX(pi, wires=0)
-	return qml.expval(qml.PauliZ(0))
+    return qml.expval(qml.PauliZ(0))
 
 print(circuit())
 ```
