@@ -1,0 +1,44 @@
+name: PennyLane/AQT integration
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  tests:
+    runs-on: ubuntu-22.04
+    env:
+      working-directory: ./pennylane
+    defaults:
+      run:
+        working-directory: ${{ env.working-directory }}
+    name: Run PennyLane integration tests
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.6.1
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11.5
+          cache: "poetry"
+      - name: Install Pandoc
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: pandoc
+      - name: Check Poetry lock file status
+        run: poetry check --lock
+      - name: Install Python dependencies
+        run: poetry install
+      - name: Check formatting
+        run: poetry run poe format_check
+      - name: Linting
+        run: poetry run poe lint
+      - name: Type checking
+        run: poetry run poe typecheck
+      - name: Run examples
+        run: poetry run poe run_examples
+      - name: Run README code
+        run: poetry run poe check_readme_code
