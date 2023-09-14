@@ -43,4 +43,5 @@ See the [examples](./examples) directory. Examples are written as Python unit te
 
 Available examples:
 
-  - Basic Bell states manipulation ([test_bell_states.py](./examples/test_bell_states.py))
+  - Basic Bell states manipulation - [bell_states.py](./examples/bell_states.py)
+  - QFT-based arithmetics, based on the eponymous [PennyLane demo](https://pennylane.ai/qml/demos/tutorial_qft_arithmetics) - [qft_arithmetics.py](./examples/qft_arithmetics.py)
