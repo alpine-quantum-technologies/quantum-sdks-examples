@@ -1,4 +1,4 @@
-name: PennyLane/AQT integration
+name: PennyLane integration
 on:
   push:
     branches: [ master ]
