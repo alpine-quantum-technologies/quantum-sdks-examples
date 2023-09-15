@@ -1,6 +1,6 @@
 # Accessing AQT resources from PennyLane
 
-AQT computing resources can be accessed in [PennyLane](https://pennylane.ai/) using the [PennyLane-Qiskit](https://pypi.org/project/PennyLane-qiskit/) plugin and the [`qiskit.remote`](https://docs.pennylane.ai/projects/qiskit/en/latest/devices/remote.html) device.
+AQT quantum computing resources can be accessed in [PennyLane](https://pennylane.ai/) using the [PennyLane-Qiskit](https://pypi.org/project/PennyLane-qiskit/) plugin and the [`qiskit.remote`](https://docs.pennylane.ai/projects/qiskit/en/latest/devices/remote.html) device.
 
 The PennyLane circuit is translated into a Qiskit circuit and the Qiskit transpiler optimizes it to match the constraints of AQT computing resources.
 
