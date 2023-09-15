@@ -39,7 +39,7 @@ print(circuit())
 
 ## Examples
 
-See the [examples](./examples) directory. Examples are written as Python unit tests, too ease up their automatic verification.
+See the [examples](./examples) directory. Examples are written as Python unit tests to ease up their automatic verification.
 
 Available examples:
 
