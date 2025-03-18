@@ -14,7 +14,7 @@
 from math import pi
 
 import pennylane as qml
-from pennylane.qnode import CountsMP
+from pennylane.measurements.counts import CountsMP
 from qiskit_aqt_provider import AQTProvider
 
 # Retrieve a noiseless offline simulator resource from the Qiskit AQT provider.
