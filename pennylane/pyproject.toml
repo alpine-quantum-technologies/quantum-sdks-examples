@@ -1,63 +1,106 @@
-[tool.poetry]
-name = "aqt-pennylane-examples"
-version = "0.1.0"
-description = "Pennylane examples with AQT backends."
-authors = ["Alpine Quantum Technologies GmbH"]
-repository = "https://github.com/alpine-quantum-technologies/quantum-sdks-examples/"
-readme = "README.md"
-license = "Apache-2.0"
-classifiers=[
-        "Intended Audience :: Developers",
-        "Intended Audience :: Science/Research",
-        "Operating System :: Microsoft :: Windows",
-        "Operating System :: MacOS",
-        "Operating System :: POSIX :: Linux",
-        "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-        "Topic :: Scientific/Engineering",
-    ]
-keywords=["pennylane", "sdk", "quantum"]
-
-include = [
-    "README.md"
-]
-
-[tool.poetry.dependencies]
-python = ">=3.11,<3.12"
-
-qiskit-aqt-provider-rc = ">=0.16.0"
-pennylane-qiskit = ">=0.31.0"
-
-[tool.poetry.group.dev.dependencies]
-black = "^23.9.1"
-mypy = "=1.5.1"
-panflute = "=1.12.5"  # use legacy pandoc-types because of old Ubuntu package
-poethepoet = "^0.22.1"
-pre-commit = "^3.4.0"
-pyproject-fmt = "^1.0"
-pytest = ">=7"
-pytest-sugar = "^0.9.7"
-ruff = "^0.0.289"
-
 [build-system]
 build-backend = "poetry.core.masonry.api"
 requires = [
   "poetry-core>=1",
 ]
 
-[tool.black]
+[tool.poetry]
+name = "aqt-pennylane-examples"
+version = "0.1.0"
+description = "Pennylane examples with AQT backends."
+authors = [ "Alpine Quantum Technologies GmbH" ]
+repository = "https://github.com/alpine-quantum-technologies/quantum-sdks-examples/"
+readme = "README.md"
+license = "Apache-2.0"
+classifiers = [
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+]
+keywords = [ "pennylane", "sdk", "quantum" ]
+
+include = [
+  "README.md",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+
+qiskit-aqt-provider = { version = ">=1", extras = [ "test" ] }
+pennylane-qiskit = "=0.36.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.15.0"
+panflute = "=1.12.5"   # use legacy pandoc-types because of old Ubuntu package
+poethepoet = "^0.33.0"
+pre-commit = "^4"
+pyproject-fmt = "^2"
+pytest = ">=8"
+pytest-sugar = "^1"
+ruff = "^0.11.0"
+
+[tool.ruff]
+target-version = "py311"
+
 line-length = 100
-target-version = ['py311']
-preview = true  # don't use implicit string concatenation
+
+lint.select = [
+  "ARG", # flake8-unused-arguments
+  "BLE", # flake8-blind-except
+  "C4",  # flake8-comprehensions
+  "C90", # mccabe
+  "D",   # pydocstyle
+  "E",   # pycodestyle errors
+  "ERA", # eradicate
+  "F",   # pyflakes
+  "I",   # isort
+  "ICN", # flake8-import-conventions
+  "ISC", # flake8-implicit-str-concat
+  "NPY", # numpy
+  "PGH", # pygrep-hooks
+  "PIE", # flake8-pie
+  "PT",  # flake8-pytest-style
+  "PTH", # flake8-use-pathlib
+  "PYI", # flake8-pyi
+  "RET", # flake8-return
+  "RSE", # flake8-raise
+  "RUF", # ruff specials
+  "S",   # flake8-bandit
+  "SIM", # flake8-simplify
+  "T10", # flake8-debugger
+  "T20", # flake8-print
+  "TID", # flake8-tidy-imports
+  "UP",  # pyupgrade
+  "W",   # pycodestyle warnings
+]
+lint.ignore = [
+  "D100",   # missing docstring in public module
+  "D101",   # missing docstring in public class
+  "D102",   # missing docstring in public method
+  "D104",   # missing docstring in public package
+  "D107",   # missing docstring in __init__
+  "D211",   # no-blank-line-before-class (incompatible with D203)
+  "D213",   # multiline-summary-second-line (incompatible with D212)
+  "S101",   # use of 'assert' detected
+  "S311",   # suspicious-non-cryptographic-random-usage
+  "SIM117", # multiple-with-statements
+]
+lint.pydocstyle.convention = "google"
 
 [tool.pyright]
 exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "docs/",
+  "**/__pycache__",
+  "**/.*",
+  "docs/",
 ]
 
 typeCheckingMode = "basic"
@@ -75,66 +118,14 @@ reportDuplicateImport = "error"
 pythonVersion = "3.11"
 pythonPlatform = "Linux"
 
-[tool.ruff]
-select = [
-    "ARG",  # flake8-unused-arguments
-    "BLE",  # flake8-blind-except
-    "C4",  # flake8-comprehensions
-    "C90",  # mccabe
-    "CPY001",  # Copyright notice
-    "D",  # pydocstyle
-    "E",  # pycodestyle errors
-    "ERA",  # eradicate
-    "F",  # pyflakes
-    "I",  # isort
-    "ICN",  # flake8-import-conventions
-    "ISC",  # flake8-implicit-str-concat
-    "NPY",  # numpy
-    "PGH",  # pygrep-hooks
-    "PIE",  # flake8-pie
-    "PT",  # flake8-pytest-style
-    "PTH",  # flake8-use-pathlib
-    "PYI",  # flake8-pyi
-    "RET",  # flake8-return
-    "RSE",  # flake8-raise
-    "RUF",  # ruff specials
-    "S",  # flake8-bandit
-    "SIM",  # flake8-simplify
-    "T10",  # flake8-debugger
-    "T20",  # flake8-print
-    "TID",  # flake8-tidy-imports
-    "UP",  # pyupgrade
-    "W",  # pycodestyle warnings
-]
-ignore = [
-    "D100",  # missing docstring in public module
-    "D101",  # missing docstring in public class
-    "D102",  # missing docstring in public method
-    "D104",  # missing docstring in public package
-    "D107",  # missing docstring in __init__
-    "D211",  # no-blank-line-before-class (incompatible with D203)
-    "D213",  # multiline-summary-second-line (incompatible with D212)
-    "S311",  # suspicious-non-cryptographic-random-usage
-    "SIM117",  # multiple-with-statements
-    "S101",  # use of 'assert' detected
-]
-line-length = 100
-target-version = 'py311'
-
-[tool.ruff.pydocstyle]
-convention = "google"
-
-[tool.ruff.flake8-copyright]
-notice-rgx = '''# Copyright \d{4}(-\d{4})? Alpine Quantum Technologies GmbH\n#\n# Licensed under the Apache License, Version 2\.0 \(the "License"\);\n# you may not use this file except in compliance with the License\.\n# You may obtain a copy of the License at\n#    http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an "AS IS" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.\n# See the License for the specific language governing permissions and\n# limitations under the License\.'''
-
 [tool.poe.tasks.format]
 shell = """
-black .
+ruff format .
 pyproject-fmt .
 """
 
-[tool.poe.tasks.black_check]
-shell = "black --check ."
+[tool.poe.tasks.ruff_format_check]
+shell = "ruff format --check ."
 
 [tool.poe.tasks.pyprojectfmt_check]
 shell = "pyproject-fmt --check ."
@@ -152,7 +143,7 @@ shell = "pytest ."
 shell = "pandoc README.md -F ../utils/run_embedded_python_code.py > /dev/null"
 
 [tool.poe.tasks]
-lint = ["ruff_check"]
-format_check = ["black_check", "pyprojectfmt_check"]
-test = ["run_examples", "check_readme_code"]
-all = ["format_check", "lint", "typecheck", "test"]
+lint = [ "ruff_check" ]
+format_check = [ "ruff_format_check", "pyprojectfmt_check" ]
+test = [ "run_examples", "check_readme_code" ]
+all = [ "format_check", "lint", "typecheck", "test" ]
